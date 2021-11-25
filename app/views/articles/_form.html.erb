@@ -1,4 +1,4 @@
-<%= turbo_frame_tag 'new_article', target: '_top' do %>
+<%= turbo_frame_tag 'article_form', target: '_top' do %>
   <%= form_with(model: article,
                 data: {
                   controller: 'reset-form',
