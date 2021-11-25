@@ -1,5 +1,9 @@
 <%= turbo_frame_tag 'new_article', target: '_top' do %>
-  <%= form_with(model: article) do |form| %>
+  <%= form_with(model: article,
+                data: {
+                  controller: 'reset-form',
+                  action: 'turbo:submit-end->reset-form#reset'
+                }) do |form| %>
     <% if article.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
@@ -23,7 +27,7 @@
     </div>
 
     <div class="actions">
-      <%= form.submit %>
+      <%= form.submit data: { reset_form_target: 'submit' } %>
     </div>
   <% end %>
 <% end %>
