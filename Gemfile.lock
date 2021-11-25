@@ -183,9 +183,6 @@ GEM
     tilt (2.0.10)
     turbo-rails (0.8.3)
       rails (>= 6.0.0)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     web-console (4.2.0)
@@ -227,7 +224,6 @@ DEPENDENCIES
   selenium-webdriver
   spring
   sqlite3 (~> 1.4)
-  turbolinks (~> 5)
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
