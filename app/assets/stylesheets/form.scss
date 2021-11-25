@@ -1,0 +1,18 @@
+button {
+  .show-when-disabled {
+    display: none;
+  }
+
+  .show-when-enabled {
+    display: initial;
+  }
+
+  &:disabled {
+    .show-when-disabled {
+      display: initial;
+    }
+    .show-when-enabled {
+      display: none;
+    }
+  }
+}

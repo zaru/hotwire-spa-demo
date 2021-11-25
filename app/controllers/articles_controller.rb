@@ -21,6 +21,9 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
 
+    # MEMO: ボタン submitting の描画を見せるためにスリープさせている
+    sleep 1
+
     respond_to do |format|
       if @article.save
         format.turbo_stream do

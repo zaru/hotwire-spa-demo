@@ -27,7 +27,10 @@
     </div>
 
     <div class="actions">
-      <%= form.submit data: { reset_form_target: 'submit' } %>
+      <button>
+        <span class="show-when-enabled">Submit</span>
+        <span class="show-when-disabled">Submitting...</span>
+      </button>
     </div>
   <% end %>
 <% end %>
