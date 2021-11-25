@@ -24,8 +24,7 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.save
         format.turbo_stream do
-          render turbo_stream: turbo_stream.append(:articles, partial: 'article',
-                                                   locals: { article: @article })
+          flash.now[:notice] = '追加しました'
         end
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
@@ -54,7 +53,7 @@ class ArticlesController < ApplicationController
     @article.destroy
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: turbo_stream.remove(@article)
+        flash.now[:notice] = '削除しました'
       end
       format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
       format.json { head :no_content }
