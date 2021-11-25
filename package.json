@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@hotwired/stimulus": "^3.0.1",
+    "@hotwired/stimulus-webpack-helpers": "^1.0.1",
     "@hotwired/turbo-rails": "^7.0.1",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
