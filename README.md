@@ -1,24 +1,13 @@
-# README
+# Rails Hotwire(Turbo/Stimulus) demo app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- [Hotwire メモ](memo.md)
 
-Things you may want to cover:
+## 動作方法
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+$ docker-compose up
+$ bundle
+$ yarn
+$ rails db:migrate
+$ rails s -b 0.0.0.0
+```

@@ -1,0 +1,79 @@
+# Hotwire メモ
+
+- https://github.com/hotwired/hotwire-rails-demo-chat
+    - サンプルを参考にコードをメモ
+    - セットアップ
+        - Gemfile に `hotwire-rails` を追加
+        - `./bin/rails hotwire:install`を実行して初期ファイルを生成
+        - `app/views/layouts/application.html.erb` に Turbo の JS ファイルを読み込ませる
+            - `<%= turbo_include_tags %>` を追加する
+        - rails new した際に TurboLinks が有効になっている場合は削除する
+            - TurboLinks 系のコード削除と gem / npm を削除すれば OK
+        - Webpacker を使って Stimulus を利用する場合は `@hotwired/stimulus-webpack-helpers` を入れる
+    - `turbo_frame_tag`
+        - 特定の View を XHR で取得し、DOM として挿入する
+            - iframe のような使い勝手の分離されていない DOM バージョンのようなもの
+        - 表示させる側の View
+            - `<%= turbo_frame_tag 'ID 名', src: '表示したい View path', target: '_top' %>`
+            - 表示させたい箇所に `turbo_frame_tag` を設置する
+            - src のパスは Rails  URL helper を使う
+        - 表示される側の View
+            - `<%= turbo_frame_tag 'ID 名', target: '_top' do %> ~ <% end %>`
+            - 表示させたい DOM を `turbo_frame_tag` で囲む
+            - 設置側と設置される側で、同一の ID になっている必要がある
+        - 表示する側、される側、両方ともに `turbo_frame_tag` を利用するため、少しわかりにくいかも
+    - `turbo_frame_tag` から POST する
+        - 例えば `turbo_frame_tag` で新規投稿フォームを表示している場合
+        - フォームから POST する際にはリクエストヘッダに `Accept: text/vnd.turbo-stream.html` が入る
+        - フォーム controller 側で `format.turbo_stream` があれば、TurboStream としてのレスポンスになる
+            - ない場合は、通常の `format.html` などの処理が走るだけ
+            - レスポンスは以下のような HTML が返ってくる
+                - `<turbo-stream action="append" target="articles"><template><tr id="article_10"> ~ </tr></template></turbo-stream>`
+                - 自動でこれを解釈し、該当 target の ID を持った DOM に対して action 指定されている挙動をする
+                - 今回は append なので DOM 末尾に追加される
+    - Stimulus を使う
+        - `hotwire-rails` gem を入れていれば Stimulus も自動で入る
+        - Stimulus のコントローラ JS をビルドする方法はいくつかある
+            - Webpacker
+            - ES Modules
+            - 今回は無難に Webpacker を使う
+                - 複数の Stimulus コントローラを読み込むのが面倒なのでヘルパーを入れる
+                - `@hotwired/stimulus-webpack-helpers`
+    - TurboFrame のフォーム内容を POST 後にリセットする
+        - Turbo には色々なイベントがあり POST 後のイベント `turbo:submit-end` を使って Stimulus からフォームリセットする
+    - TurboStream で削除する
+        - 削除した際の描画を TurboStream で行う方法
+        - 削除ボタンは通常通り
+            - `<%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>`
+        - destroy アクション
+            - `format.turbo_stream { render turbo_stream: turbo_stream.remove(@article) }`
+            - destroy.turbo_stream.erb ファイルを用意
+                - `<%= turbo_stream.remove(@article) %>`
+                - これで該当オブジェクトの DOM が削除される
+            - 若干、ここは面倒臭さを感じる…
+    - flash メッセージの取り扱い
+        - 作成・削除などの後に表示する flash メッセージは微妙に難しい
+        - `application.turbo_stream.erb` を作成し `<%= turbo_stream.replace 'flash-alerts' do %>` で flash メッセージを置換する準備をする
+        - controller 側で `flash.now[:notice]` でメッセージを格納
+            - ただし、ここでは明示的な `render` メソッドは読んではダメ
+            - https://github.com/hotwired/turbo-rails/issues/25
+            - なぜなら `render` では個別 view partial ファイルを描画し layout ファイルを描画しないから
+    - TurboFrame へのリンク先反映
+        - `<a href="foo" data-turbo-frame="frame-id">`
+        - これで該当の `<turboframe id="frame-id">` が置き換わる
+        - URL も書き換えたい場合は data-turbo-action="advance" 属性を追加する
+            - turbo v7.1.0 から対応
+    - 確認メッセージ
+        - `rails-ujs` 依存がなくなったので確認ダイアログの表示を Tubor でサポートしている
+        - https://github.com/hotwired/turbo/pull/379
+    - submit ボタンの disabled 切り替え
+        - submit した後に、自動で disabled を設定し、POST 完了後に disabled が自動で外れる
+        - https://github.com/hotwired/turbo/pull/386
+    - rails-ujs 依存からの脱出
+        - rails-ujs は Rails v7 から標準ではなくなる
+        - rails-ujs を Turbo で代替する
+        - 削除リンク
+            - `<%= link_to 'Destroy', article, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>`
+            - `data-turbo-method` で各メソッドを指定して実行できる
+            - https://github.com/hotwired/turbo/pull/277
+    - 
