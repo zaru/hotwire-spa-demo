@@ -23,6 +23,10 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.append(:articles, partial: 'article',
+                                                   locals: { article: @article })
+        end
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
