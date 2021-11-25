@@ -1,6 +1,3 @@
-<h1>Editing Article</h1>
+<%= turbo_frame_tag 'article_index', src: articles_path %>
 
 <%= render 'form', article: @article %>
-
-<%= link_to 'Show', @article %> |
-<%= link_to 'Back', articles_path %>

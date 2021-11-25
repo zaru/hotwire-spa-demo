@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-
+<%= turbo_frame_tag 'article_index' do %>
 <h1>Articles</h1>
 
 <table>
@@ -16,6 +15,6 @@
   </tbody>
 </table>
 
-<br>
+<% end %>
 
 <%= turbo_frame_tag 'article_form', src: new_article_path, target: '_top' %>
