@@ -1,20 +1,19 @@
 <%= turbo_frame_tag 'article_index' do %>
-<h1>Articles</h1>
+  <h1>Articles</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
-  <tbody id="articles">
-    <%= render partial: 'article', collection: @articles %>
-  </tbody>
-</table>
-
+    <tbody id="articles">
+      <%= render partial: 'article', collection: @articles %>
+    </tbody>
+  </table>
 <% end %>
 
 <%= turbo_frame_tag 'article_form', src: new_article_path, target: '_top' %>
