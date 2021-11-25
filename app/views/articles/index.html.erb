@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Article', new_article_path %>
+<%= turbo_frame_tag 'new_article', src: new_article_path, target: '_top' %>
