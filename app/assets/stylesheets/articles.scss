@@ -1,3 +1,41 @@
 // Place all the styles related to the Articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.article {
+  &.enter {
+    animation: fade-in 0.25s ease-out, slide-in 0.25s ease-out;
+  }
+  &.leave {
+    animation: fade-out 0.25s ease-out, slide-out 0.25s ease-out;
+  }
+  &.replace {
+    animation: glow 0.75s ease-in;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slide-in {
+  from { transform: translateX(6rem); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-out {
+  from { transform: translateX(0); }
+  to { transform: translateX(6rem); }
+}
+
+@keyframes glow {
+  from { background-color: white; }
+  from { background-color: pink; }
+}
+
