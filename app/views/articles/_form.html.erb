@@ -1,36 +1,38 @@
 <%= turbo_frame_tag 'article_form', target: '_top' do %>
-  <%= form_with(model: article,
-                data: {
-                  controller: 'reset-form',
-                  action: 'turbo:submit-end->reset-form#reset'
-                }) do |form| %>
-    <% if article.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
-  
-        <ul>
-          <% article.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
+  <div class="w-full max-w-2xl mx-auto my-5 p-3">
+    <%= form_with(model: article,
+                  data: {
+                    controller: 'reset-form',
+                    action: 'turbo:submit-end->reset-form#reset'
+                  }) do |form| %>
+      <% if article.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+          <ul>
+            <% article.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="mb-6">
+        <%= form.label :title, class: 'block mb-2 text-sm text-gray-600 dark:text-gray-400' %>
+        <%= form.text_field :title, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500' %>
+      </div>
+
+      <div class="mb-6">
+        <%= form.label :content, class: 'block mb-2 text-sm text-gray-600 dark:text-gray-400' %>
+        <%= form.text_area :content, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500' %>
+      </div>
+
+      <div class="flex justify-center">
+        <button class="group bg-indigo-500 px-5 py-2 text-xs shadow-xs font-medium tracking-wider  text-indigo-100 rounded-full hover:shadow-2xl hover:bg-indigo-600">
+          <span class="group-disabled:hidden">Submit</span>
+          <span class="hidden group-disabled:inline">Submitting...</span>
+        </button>
       </div>
     <% end %>
-
-    <div class="field">
-      <%= form.label :title %>
-      <%= form.text_field :title %>
-    </div>
-
-    <div class="field">
-      <%= form.label :content %>
-      <%= form.text_area :content %>
-    </div>
-
-    <div class="actions">
-      <button>
-        <span class="show-when-enabled">Submit</span>
-        <span class="show-when-disabled">Submitting...</span>
-      </button>
-    </div>
-  <% end %>
+  </div>
 <% end %>

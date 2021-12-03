@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     # MEMO: ボタン submitting の描画を見せるためにスリープさせている
-    sleep 1
+    sleep 0.25
 
     respond_to do |format|
       if @article.save

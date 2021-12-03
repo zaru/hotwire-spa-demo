@@ -55,7 +55,7 @@ export default class extends Controller {
         });
         // DOM を削除する処理を一時停止し、CSS アニメーションを完了してから処理を再開する
         event.preventDefault();
-        this.element.classList.add('leave');
+        this.element.classList.add('animation-remove');
         this.element.addEventListener('animationend', () => {
           event.target.performAction();
         });
@@ -71,7 +71,7 @@ export default class extends Controller {
           firstElementChild: event.target.firstElementChild,
           targetElements: event.target.targetElements
         });
-        event.target.templateElement.content.firstElementChild.classList.add('enter');
+        event.target.templateElement.content.firstElementChild.classList.add('animation-insert');
       }
 
       if (event.target.action === 'replace' &&
@@ -83,7 +83,7 @@ export default class extends Controller {
           action: event.target.action,
           targetElements: event.target.targetElements
         });
-        event.target.templateElement.content.firstElementChild.classList.add('replace');
+        event.target.templateElement.content.firstElementChild.classList.add('animation-replace');
       }
     });
 

@@ -1,3 +1,53 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .animation-insert {
+    animation: fade-in 0.25s ease-out, slide-in 0.25s ease-out;
+  }
+  .animation-remove {
+    animation: fade-out 0.25s ease-out, slide-out 0.25s ease-out;
+  }
+  .animation-replace {
+    animation: glow 0.75s ease-in;
+  }
+  .animation-slide-down-varnish {
+    animation: fade-in 0.25s ease-out, slide-down 0.5s ease-out, varnish 0.5s 3s forwards;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  @keyframes slide-down {
+    from { transform: translateY(-1rem); }
+    to { transform: translateY(0); }
+  }
+
+  @keyframes varnish {
+    from { opacity: 1; }
+    to { opacity: 0; visibility: hidden; }
+  }
+
+  @keyframes slide-in {
+    from { transform: translateX(6rem); }
+    to { transform: translateX(0); }
+  }
+
+  @keyframes slide-out {
+    from { transform: translateX(0); }
+    to { transform: translateX(6rem); }
+  }
+
+  @keyframes glow {
+    from { @apply bg-white; }
+    from { @apply bg-pink-200; }
+  }
+}

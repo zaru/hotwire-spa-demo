@@ -1,21 +1,33 @@
 <%= turbo_stream_from 'articles' %>
 
 <%= turbo_frame_tag 'article_index' do %>
-  <h1>Articles</h1>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Content</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody id="articles">
-      <%= render partial: 'article', collection: @articles %>
-    </tbody>
-  </table>
+  <div class="w-full max-w-2xl mx-auto my-5 bg-white shadow-lg rounded-sm border border-gray-200">
+    <header class="px-5 py-4 border-b border-gray-100">
+      <h2 class="font-semibold text-gray-800">Articles</h2>
+    </header>
+    <div class="p-3">
+      <div class="overflow-x-auto">
+        <table class="table-auto w-full overflow-hidden">
+          <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+          <tr>
+            <th class="p-2 whitespace-nowrap">
+              <div class="font-semibold text-left">Title</div>
+            </th>
+            <th class="p-2 whitespace-nowrap">
+              <div class="font-semibold text-left">UpdatedAt</div>
+            </th>
+            <th class="p-2 whitespace-nowrap">
+              <div class="font-semibold text-left"></div>
+            </th>
+          </tr>
+          </thead>
+          <tbody id="articles" class="text-sm divide-y divide-gray-100">
+          <%= render partial: 'article', collection: @articles %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 <% end %>
 
 <%= turbo_frame_tag 'article_form', src: new_article_path, target: '_top' %>

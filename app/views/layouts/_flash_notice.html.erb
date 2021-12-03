@@ -1,3 +1,10 @@
 <%= turbo_frame_tag 'flash-alerts' do %>
-  <p><%= flash[:notice] %></p>
+  <% if flash[:notice] %>
+    <div class="fixed inset-x-0 m-auto max-w-md animation-slide-down-varnish" style="width: fit-content">
+      <div class="inline-flex items-center bg-white leading-none text-indigo-600 rounded-full p-2 shadow text-teal text-sm">
+        <span class="inline-flex bg-indigo-600 text-white rounded-full h-6 px-3 justify-center items-center">Good</span>
+        <span class="inline-flex px-2"><%= flash[:notice] %></span>
+      </div>
+    </div>
+  <% end %>
 <% end %>
