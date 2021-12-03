@@ -11,6 +11,7 @@ gem 'redis', '~> 4.0'
 gem 'sass-rails', '>= 6'
 gem 'sqlite3', '~> 1.4'
 gem 'webpacker', '~> 5.0'
+gem 'cssbundling-rails'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 

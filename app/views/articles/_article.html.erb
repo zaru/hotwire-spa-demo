@@ -1,7 +1,23 @@
-<tr id="<%= dom_id article %>" class="article" data-controller="frame-event">
-  <td><%= article.title %></td>
-  <td><%= article.content %></td>
-  <td><%= link_to 'Show', article %></td>
-  <td><%= link_to 'Edit', edit_article_path(article), data: { turbo_frame: 'article_form', turbo_action: 'advance' } %></td>
-  <td><%= link_to 'Destroy', article, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></td>
+<tr id="<%= dom_id article %>" data-controller="frame-event">
+  <td class="p-2 whitespace-nowrap">
+    <div class="text-left"><%= article.title %></div>
+  </td>
+  <td class="p-2 whitespace-nowrap">
+    <div class="text-left"><%= article.updated_at %></div>
+  </td>
+  <td class="p-2 whitespace-nowrap">
+    <div class="flex gap-x-1.5 justify-end">
+      <%= link_to 'Edit',
+                  edit_article_path(article),
+                  data: { turbo_frame: 'article_form', turbo_action: 'advance' },
+                  class: 'bg-indigo-500 px-5 py-2 text-xs shadow-xs font-medium tracking-wider  text-indigo-100 rounded-full hover:shadow-2xl hover:bg-indigo-600'
+      %>
+      <%= link_to 'Destroy',
+                  article,
+                  method: :delete,
+                  data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' },
+                  class: 'bg-red-500 px-5 py-2 text-xs shadow-xs font-medium tracking-wider  text-red-100 rounded-full hover:shadow-2xl hover:bg-red-600'
+      %>
+    </div>
+  </td>
 </tr>
