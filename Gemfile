@@ -3,16 +3,22 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.3'
 
-gem 'hotwire-rails'
-gem 'jbuilder', '~> 2.7'
+# Core
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'redis', '~> 4.0'
-gem 'sass-rails', '>= 6'
 gem 'sqlite3', '~> 1.4'
-gem 'webpacker', '~> 5.0'
-gem 'cssbundling-rails'
 
+# フロントビルドシステム
+gem 'cssbundling-rails'
+gem 'sass-rails', '>= 6'
+gem 'webpacker', '~> 5.0'
+
+# View / Presenter
+gem 'hotwire-rails'
+gem 'jbuilder', '~> 2.7'
+
+# Performance
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
