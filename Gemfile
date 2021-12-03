@@ -17,6 +17,7 @@ gem 'webpacker', '~> 5.0'
 # View / Presenter
 gem 'hotwire-rails'
 gem 'jbuilder', '~> 2.7'
+gem 'kaminari'
 
 # Performance
 gem 'bootsnap', '>= 1.4.4', require: false
