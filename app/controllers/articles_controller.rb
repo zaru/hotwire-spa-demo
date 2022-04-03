@@ -7,15 +7,20 @@ class ArticlesController < ApplicationController
   end
 
   # GET /articles/1 or /articles/1.json
-  def show; end
+  def show
+    render 'show_frame' if turbo_frame_request?
+  end
 
   # GET /articles/new
   def new
     @article = Article.new
+    render 'new_frame' if turbo_frame_request?
   end
 
   # GET /articles/1/edit
-  def edit; end
+  def edit
+    render 'edit_frame' if turbo_frame_request?
+  end
 
   # POST /articles or /articles.json
   def create

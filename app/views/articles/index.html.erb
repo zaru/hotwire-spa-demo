@@ -1,9 +1,14 @@
 <%= turbo_stream_from 'articles' %>
 
 <%= turbo_frame_tag 'article_index' do %>
-  <div class="w-full max-w-2xl mx-auto my-5 bg-white shadow-lg rounded-sm border border-gray-200">
-    <header class="px-5 py-4 border-b border-gray-100">
-      <h2 class="font-semibold text-gray-800">Articles</h2>
+  <div class="w-full max-w-2xl mx-auto my-5 bg-white shadow-sm rounded-sm border border-gray-200">
+    <header class="px-5 py-4 border-b border-gray-100 flex justify-between items-center">
+      <h2 class="font-semibold text-gray-800">記事一覧</h2>
+
+      <%= link_to '新規追加',
+                  new_article_path,
+                  data: { turbo_frame: 'article', turbo_action: 'advance' },
+                  class: 'underline hover:no-underline decoration-1 text-xs text-slate-600 tracking-wider hover:shadow-2xl' %>
     </header>
     <div class="p-3">
       <div class="overflow-x-auto">
@@ -30,8 +35,10 @@
   </div>
 <% end %>
 
+<div class="h-screen min-w-fit max-w-md bg-white z-10 fixed top-0 right-0 shadow-md">
+  <%= turbo_frame_tag 'article' %>
+</div>
+
 <div class="w-full max-w-2xl mx-auto my-5">
   <%= paginate @articles %>
 </div>
-
-<%= turbo_frame_tag 'article_form', src: new_article_path, target: '_top' %>

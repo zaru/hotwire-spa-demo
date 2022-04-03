@@ -7,9 +7,9 @@
   </td>
   <td class="p-2 whitespace-nowrap">
     <div class="flex gap-x-1.5 justify-end">
-      <%= link_to 'Edit',
-                  edit_article_path(article),
-                  data: { turbo_frame: 'article_form', turbo_action: 'advance' },
+      <%= link_to 'Show',
+                  article_path(article),
+                  data: { turbo_frame: 'article', turbo_action: 'advance' },
                   class: 'bg-indigo-500 px-5 py-2 text-xs shadow-xs font-medium tracking-wider  text-indigo-100 rounded-full hover:shadow-2xl hover:bg-indigo-600'
       %>
       <%= link_to 'Destroy',

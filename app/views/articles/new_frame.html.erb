@@ -1,0 +1,15 @@
+<%= turbo_frame_tag 'article', target: '_top' do %>
+  <div data-controller="close-frame"
+       class="w-80"
+  >
+    <div class="p-3">
+      <button type="button"
+              data-action="click->close-frame#close"
+              class="underline hover:no-underline decoration-1 text-xs text-slate-600 tracking-wider hover:shadow-2xl"
+      >
+        x キャンセル
+      </button>
+    </div>
+    <%= render 'form', article: @article %>
+  </div>
+<% end %>

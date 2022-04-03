@@ -1,5 +1,7 @@
-<%= turbo_stream_from 'articles' %>
+<div class="w-full max-w-2xl mx-auto py-5">
+  <%= link_to '← 一覧へ戻る',
+              articles_path,
+              class: 'underline hover:no-underline decoration-1 text-xs text-slate-600 tracking-wider hover:shadow-2xl' %>
 
-<%= turbo_frame_tag 'article_index', src: articles_path %>
-
-<%= render 'form', article: @article %>
+  <%= render 'form', article: @article %>
+</div>

@@ -1,5 +1,7 @@
-<h1>New Article</h1>
+<div class="w-full max-w-2xl mx-auto py-5">
+  <%= link_to '← 一覧へ戻る',
+              articles_path,
+              class: 'underline hover:no-underline decoration-1 text-xs text-slate-600 tracking-wider hover:shadow-2xl' %>
 
-<%= render 'form', article: @article %>
-
-<%= link_to 'Back', articles_path %>
+  <%= render 'form', article: @article %>
+</div>
