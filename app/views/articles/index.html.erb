@@ -1,44 +1,47 @@
 <%= turbo_stream_from 'articles' %>
 
-<%= turbo_frame_tag 'article_index' do %>
-  <div class="w-full max-w-2xl mx-auto my-5 bg-white shadow-sm rounded-sm border border-gray-200">
-    <header class="px-5 py-4 border-b border-gray-100 flex justify-between items-center">
-      <h2 class="font-semibold text-gray-800">記事一覧</h2>
+<%= turbo_frame_tag 'article_index', data: { turbo_action: "advance" } do %>
+  <!-- ドロワーを閉じるための Stimulus コントローラ、閉じた後の URL を一覧の URL にするために必要 -->
+  <div data-controller="drawer"
+       data-drawer-list-url-value="<%= request.fullpath %>"
+  >
+    <div class="w-full max-w-2xl mx-auto my-5 bg-white shadow-sm rounded-sm border border-gray-200">
+      <header class="px-5 py-4 border-b border-gray-100 flex justify-between items-center">
+        <h2 class="font-semibold text-gray-800">記事一覧</h2>
 
-      <%= link_to '新規追加',
-                  new_article_path,
-                  data: { turbo_frame: 'article', turbo_action: 'advance' },
-                  class: 'underline hover:no-underline decoration-1 text-xs text-slate-600 tracking-wider hover:shadow-2xl' %>
-    </header>
-    <div class="p-3">
-      <div class="overflow-x-auto">
-        <table class="table-auto w-full overflow-hidden">
-          <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
-          <tr>
-            <th class="p-2 whitespace-nowrap">
-              <div class="font-semibold text-left">Title</div>
-            </th>
-            <th class="p-2 whitespace-nowrap">
-              <div class="font-semibold text-left">UpdatedAt</div>
-            </th>
-            <th class="p-2 whitespace-nowrap">
-              <div class="font-semibold text-left"></div>
-            </th>
-          </tr>
-          </thead>
-          <tbody id="articles" class="text-sm divide-y divide-gray-100">
-          <%= render partial: 'article', collection: @articles %>
-          </tbody>
-        </table>
+        <%= link_to '新規追加',
+                    new_article_path,
+                    data: { turbo_frame: 'article', turbo_action: 'advance' },
+                    class: 'underline hover:no-underline decoration-1 text-xs text-slate-600 tracking-wider hover:shadow-2xl' %>
+      </header>
+      <div class="p-3">
+        <div class="overflow-x-auto">
+          <table class="table-auto w-full overflow-hidden">
+            <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+            <tr>
+              <th class="p-2 whitespace-nowrap">
+                <div class="font-semibold text-left">Title</div>
+              </th>
+              <th class="p-2 whitespace-nowrap">
+                <div class="font-semibold text-left">UpdatedAt</div>
+              </th>
+              <th class="p-2 whitespace-nowrap">
+                <div class="font-semibold text-left"></div>
+              </th>
+            </tr>
+            </thead>
+            <tbody id="articles" class="text-sm divide-y divide-gray-100">
+            <%= render partial: 'article', collection: @articles %>
+            </tbody>
+          </table>
+        </div>
       </div>
+    </div>
+    <div class="w-full max-w-2xl mx-auto my-5">
+      <%= paginate @articles %>
+    </div>
+    <div class="h-screen min-w-fit max-w-md bg-white z-10 fixed top-0 right-0 shadow-md">
+      <%= turbo_frame_tag 'article' %>
     </div>
   </div>
 <% end %>
-
-<div class="h-screen min-w-fit max-w-md bg-white z-10 fixed top-0 right-0 shadow-md">
-  <%= turbo_frame_tag 'article' %>
-</div>
-
-<div class="w-full max-w-2xl mx-auto my-5">
-  <%= paginate @articles %>
-</div>
