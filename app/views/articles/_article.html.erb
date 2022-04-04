@@ -15,7 +15,11 @@
       <%= link_to 'Destroy',
                   article,
                   method: :delete,
-                  data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' },
+                  data: {
+                    turbo_method: :delete,
+                    turbo_frame: '_top',
+                    turbo_confirm: 'Are you sure?'
+                  },
                   class: 'bg-red-500 px-5 py-2 text-xs shadow-xs font-medium tracking-wider  text-red-100 rounded-full hover:shadow-2xl hover:bg-red-600'
       %>
     </div>

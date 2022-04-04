@@ -2,7 +2,8 @@
   <%= form_with(model: article,
                 data: {
                   controller: 'reset-form',
-                  action: 'turbo:submit-end->reset-form#reset'
+                  action: 'turbo:submit-end->reset-form#reset',
+                  turbo_frame: '_top'
                 }) do |form| %>
     <% if article.errors.any? %>
       <div id="error_explanation">
