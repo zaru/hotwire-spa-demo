@@ -61,7 +61,7 @@ export default class extends Controller {
         });
       }
 
-      if (event.target.action === 'append' &&
+      if (event.target.action === 'prepend' &&
         event.target.firstElementChild instanceof HTMLTemplateElement
       ) {
         console.log('turbo:before-stream-render', {
