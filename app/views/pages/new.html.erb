@@ -1,9 +1,12 @@
-<h1>New page</h1>
-
-<%= render "form", page: @page %>
-
-<br>
-
-<div>
-  <%= link_to "Back to pages", pages_path %>
+<div class="flex h-screen">
+  <div class="basis-6/12 border-r-2">
+    <p><%= link_to '一覧へ戻る', pages_url %></p>
+    <%= render "form", page: @page %>
+    <p><%= dom_id @page %></p>
+  </div>
+  <div class="basis-6/12">
+    <iframe src="<%= page_previews_path %>"
+            class="h-full w-full"
+    ></iframe>
+  </div>
 </div>

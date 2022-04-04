@@ -1,0 +1,8 @@
+<%= turbo_frame_tag 'page_preview' do %>
+  <div class="mt-5">
+    <h1 class="text-2xl text-<%= page.color %>-800"><%= page.title %></h1>
+    <div class="mt-5 p-4 bg-<%= page.color %>-100 text-sm">
+      <%= page.description %>
+    </div>
+  </div>
+<% end %>

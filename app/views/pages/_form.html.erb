@@ -1,4 +1,10 @@
-<%= form_with(model: page) do |form| %>
+<%= form_with(
+      model: page,
+      data: {
+        controller: 'preview',
+        preview_url_value: page_previews_path
+      }
+    ) do |form| %>
   <% if page.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(page.errors.count, "error") %> prohibited this page from being saved:</h2>
@@ -13,17 +19,29 @@
 
   <div>
     <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title,
+                        data: {
+                          action: 'input->preview#post'
+                        }
+    %>
   </div>
 
   <div>
     <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+    <%= form.text_field :description,
+                        data: {
+                          action: 'input->preview#post'
+                        }
+    %>
   </div>
 
   <div>
     <%= form.label :color, style: "display: block" %>
-    <%= form.text_field :color %>
+    <%= form.text_field :color,
+                        data: {
+                          action: 'input->preview#post'
+                        }
+    %>
   </div>
 
   <div>
