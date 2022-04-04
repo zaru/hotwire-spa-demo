@@ -15,7 +15,8 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 5.0'
 
 # View / Presenter
-gem 'hotwire-rails'
+gem 'turbo-rails'
+gem 'stimulus-rails'
 gem 'jbuilder', '~> 2.7'
 gem 'kaminari'
 
