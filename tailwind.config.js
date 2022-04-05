@@ -1,10 +1,20 @@
 module.exports = {
   mode: 'jit',
-  purge: [
-    './app/views/**/*.html.erb',
-    './app/helpers/**/*.rb',
-    './app/javascript/**/*.js'
-  ],
+  purge: {
+    content: [
+      './app/views/**/*.html.erb',
+      './app/helpers/**/*.rb',
+      './app/javascript/**/*.js'
+    ],
+    safelist: [
+      {
+        pattern: /bg-/,
+      },
+      {
+        pattern: /text-/,
+      }
+    ],
+  },
   theme: {
   }
 }
