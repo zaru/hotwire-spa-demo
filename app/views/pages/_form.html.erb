@@ -16,35 +16,38 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
+  <div class="mb-6">
+    <%= form.label :title, class: 'block mb-2 text-sm text-gray-600 dark:text-gray-400' %>
     <%= form.text_field :title,
+                        class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500',
                         data: {
                           action: 'input->preview#post'
-                        }
-    %>
+                        } %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description,
-                        data: {
-                          action: 'input->preview#post'
-                        }
-    %>
+  <div class="mb-6">
+    <%= form.label :description, class: 'block mb-2 text-sm text-gray-600 dark:text-gray-400' %>
+    <%= form.text_area :description,
+                       class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500',
+                       data: {
+                         action: 'input->preview#post'
+                       } %>
   </div>
 
-  <div>
-    <%= form.label :color, style: "display: block" %>
-    <%= form.text_field :color,
-                        data: {
-                          action: 'input->preview#post'
-                        }
-    %>
+  <div class="mb-6">
+    <%= form.label :color, class: 'block mb-2 text-sm text-gray-600 dark:text-gray-400' %>
+    <%= form.select :color,
+                    ['slate', 'neutral', 'red', 'orange', 'yellow', 'lime', 'green', 'teal', 'sky', 'blue', 'indigo', 'fuchsia', 'pink', 'rose'],
+                    { include_blank: true },
+                    data: {
+                      action: 'input->preview#post'
+                    } %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="flex justify-center">
+    <button class="group bg-indigo-500 px-5 py-2 text-xs shadow-xs font-medium tracking-wider  text-indigo-100 rounded-full hover:shadow-2xl hover:bg-indigo-600">
+      <span class="group-disabled:hidden">Submit</span>
+      <span class="hidden group-disabled:inline">Submitting...</span>
+    </button>
   </div>
 <% end %>
