@@ -21,3 +21,4 @@ $ yarn build:css --watch
 
 - [CRUD SPA 風味](http://localhost:3000/articles)
 - [Tab 切り替え](http://localhost:3000/tabs)
+- [ライブプレビュー](http://localhost:3000/pages/new)
