@@ -1,0 +1,16 @@
+<%= turbo_stream_from 'item_labels' %>
+<%= turbo_stream_from 'label_options' %>
+
+<div class="w-full max-w-2xl mx-auto my-5 p-3">
+  <h1><%= @item.name %></h1>
+  <ul id="item_labels" class="mt-5 flex gap-x-1">
+    <% @item.item_labels.each do |item_label| %>
+      <%= render 'item_labels/item_label', item_label: item_label %>
+    <% end %>
+  </ul>
+  <ul id="label_options" class="mt-5 shadow w-52 px-5 py-2">
+    <% Label.all.each do |label| %>
+      <%= render 'item_labels/label_option', label: label, item: @item %>
+    <% end %>
+  </ul>
+</div>

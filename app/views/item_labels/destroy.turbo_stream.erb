@@ -1,0 +1,2 @@
+<% @item_label.broadcast_remove_to 'item_labels', target: dom_id(@item_label) %>
+<% @item_label.broadcast_replace_to 'label_options', target: dom_id(@item_label.label), partial: 'item_labels/label_option', locals: { label: @item_label.label, item: @item_label.item } %>

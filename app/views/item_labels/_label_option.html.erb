@@ -1,0 +1,39 @@
+<li id="label_<%= label.id %>" class="flex items-center justify-between mt-2 pb-2">
+  <%= label.title %>
+  <% if item.label_ids.include?(label.id) %>
+    <%= form_with(model: item.item_labels.find_by(label_id: label.id),
+                  method: :delete,
+                  data: {
+                    turbo_frame: 'item_labels'
+                  }) do |form| %>
+      <%= form.hidden_field :item_id, value: item.id %>
+      <%= form.hidden_field :label_id, value: label.id %>
+      <button class="group rounded bg-red-200 p-2 text-sm cursor-pointer w-16 flex justify-center">
+        <span class="group-disabled:hidden">[削除]</span>
+        <span class="hidden group-disabled:inline">
+          <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </span>
+      </button>
+    <% end %>
+  <% else %>
+    <%= form_with(model: item.item_labels.build(label_id: label.id),
+                  data: {
+                    turbo_frame: 'item_labels'
+                  }) do |form| %>
+      <%= form.hidden_field :item_id, value: item.id %>
+      <%= form.hidden_field :label_id, value: label.id %>
+      <button class="group rounded bg-amber-200 p-2 text-sm cursor-pointer w-16 flex justify-center">
+        <span class="group-disabled:hidden">[追加]</span>
+        <span class="hidden group-disabled:inline">
+          <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </span>
+      </button>
+    <% end %>
+  <% end %>
+</li>

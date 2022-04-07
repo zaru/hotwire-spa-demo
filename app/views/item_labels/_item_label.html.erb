@@ -1,0 +1,11 @@
+<li id="<%= dom_id item_label %>" class="rounded-full bg-slate-200 py-2 px-5">
+  <%= item_label.label.title %>
+  <%= link_to '[削除]',
+              item_label,
+              method: :delete,
+              data: {
+                turbo_method: :delete
+              },
+              class: 'text-sm'
+  %>
+</li>
