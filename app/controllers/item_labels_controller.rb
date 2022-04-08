@@ -8,7 +8,7 @@ class ItemLabelsController < ApplicationController
         format.html { redirect_to @item_label, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @item_label }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :error, status: :unprocessable_entity }
         format.json { render json: @item_label.errors, status: :unprocessable_entity }
       end
     end

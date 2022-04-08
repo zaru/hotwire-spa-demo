@@ -1,15 +1,22 @@
 class LabelsController < ApplicationController
+  def new; end
+
   def create
-    @label = Label.new(label_params)
+    @label = Label.find_or_initialize_by(title: params[:label][:title])
+    @item_label = @label.item_labels.build(item_id: params[:label][:item_labels_attributes]['0'][:item_id])
 
     respond_to do |format|
       if @label.save
-        @item_label = @label.item_labels.first
         format.turbo_stream { flash.now[:notice] = '追加しました' }
         format.html { redirect_to @label, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @label }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream do
+          flash.now[:notice] = 'すでに追加済みです'
+          # MEMO: なぜか render nothing だと create.turbo_stream がレンダリングされてしまう
+          render :error, status: :unprocessable_entity
+        end
+        format.html { render :error, status: :unprocessable_entity }
         format.json { render json: @label.errors, status: :unprocessable_entity }
       end
     end
