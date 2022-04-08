@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :items
   resources :item_labels
+  resources :labels
   resources :pages
   resource :page_previews, only: [:show, :create]
   resources :articles

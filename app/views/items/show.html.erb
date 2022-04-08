@@ -3,11 +3,25 @@
 
 <div class="w-full max-w-2xl mx-auto my-5 p-3">
   <h1><%= @item.name %></h1>
-  <ul id="item_labels" class="mt-5 flex gap-x-1">
+  <ul id="item_labels" class="mt-5 flex flex-wrap gap-1">
     <% @item.item_labels.each do |item_label| %>
       <%= render 'item_labels/item_label', item_label: item_label %>
     <% end %>
   </ul>
+
+  <%= form_with(model: Label.new,
+                data: {
+                  controller: 'reset-form',
+                  action: 'turbo:submit-end->reset-form#reset'
+                },
+                class: 'mt-5') do |form| %>
+    <%= form.fields_for :item_labels, Label.new.item_labels.build do |item_label_field| %>
+      <%= item_label_field.hidden_field :item_id, value: @item.id %>
+    <% end %>
+    <%= form.text_field :title, placeholder: 'ラベルを新規追加', class: 'border border-gray-300 rounded-md p-2' %>
+    <%= form.submit('追加', class: 'rounded bg-amber-200 p-2 text-sm cursor-pointer') %>
+  <% end %>
+
   <ul id="label_options" class="mt-5 shadow w-52 px-5 py-2">
     <% Label.all.each do |label| %>
       <%= render 'item_labels/label_option', label: label, item: @item %>
