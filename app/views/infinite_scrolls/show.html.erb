@@ -1,0 +1,14 @@
+<div class="w-full max-w-2xl mx-auto my-5 bg-white">
+  <h1 class="mt-5 p-4 text-2xl font-semibold">Infinite Scroll</h1>
+  <%= turbo_frame_tag 'infinite_scrolls' do %>
+    <% @infinite_items.each do |item| %>
+      <div class="mt-10">
+        <h2 class="mt-5 p-4 text-xl font-semibold">[<%= item.id %>] <%= item.name %></h2>
+        <div class="mt-5 p-4 bg-amber-200">
+          <%= simple_format(item.description) %>
+        </div>
+      </div>
+    <% end %>
+    <%= turbo_frame_tag 'infinite_scrolls', src: infinite_scrolls_path(page: @page + 1), loading: 'lazy' %>
+  <% end %>
+</div>

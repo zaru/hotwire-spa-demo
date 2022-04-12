@@ -25,3 +25,4 @@ $ yarn build:css --watch
 - [has_many なラベル付け](http://localhost:3000/items/1)
   - rails console で適当に Item 作ってください
   - `Item.create(name: 'foo')`
+- [無限スクロールのページング](http://localhost:3000/infinite_scrolls)
