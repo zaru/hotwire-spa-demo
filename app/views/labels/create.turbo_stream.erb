@@ -1,2 +1,7 @@
 <% @item_label.broadcast_append_to 'item_labels', target: 'item_labels', partial: 'item_labels/item_label', locals: { item_label: @item_label } %>
-<% @item_label.broadcast_append_to 'label_options', target: 'label_options', partial: 'item_labels/label_option', locals: { label: @item_label.label, item: @item_label.item } %>
+
+<% if @new_record %>
+  <% @item_label.broadcast_append_to 'label_options', target: 'label_options', partial: 'item_labels/label_option', locals: { label: @item_label.label, item: @item_label.item } %>
+<% else %>
+  <% @item_label.broadcast_replace_to 'label_options', target: dom_id(@item_label.label), partial: 'item_labels/label_option', locals: { label: @item_label.label, item: @item_label.item } %>
+<% end %>

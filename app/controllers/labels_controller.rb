@@ -3,6 +3,7 @@ class LabelsController < ApplicationController
 
   def create
     @label = Label.find_or_initialize_by(title: params[:label][:title])
+    @new_record = @label.new_record?
     @item_label = @label.item_labels.build(item_id: params[:label][:item_labels_attributes]['0'][:item_id])
 
     respond_to do |format|
