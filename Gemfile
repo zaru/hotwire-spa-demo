@@ -13,7 +13,7 @@ gem 'sqlite3', '~> 1.4'
 gem 'sprockets-rails'
 gem 'cssbundling-rails'
 gem 'sass-rails', '>= 6'
-gem 'webpacker', '~> 5.0'
+gem 'jsbundling-rails'
 
 # View / Presenter
 gem 'turbo-rails'

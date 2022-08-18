@@ -20,6 +20,7 @@
     "webpack-dev-server": "^4.10.0"
   },
   "scripts": {
-    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css"
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css",
+    "build": "webpack --config webpack.config.js"
   }
 }
