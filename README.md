@@ -15,6 +15,9 @@ $ rails s -b 0.0.0.0
 
 // Tailwind CSS のビルド
 $ yarn build:css --watch
+
+// JS のビルド
+$ yarn watch:js
 ```
 
 ## デモページ

@@ -4,7 +4,7 @@
 // that code so it'll be compiled.
 
 import * as ActiveStorage from "@rails/activestorage"
-import "channels"
-import "controllers"
+import "./channels"
+import "./controllers"
 
 ActiveStorage.start()
