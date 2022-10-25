@@ -9,6 +9,6 @@ class PagePreviewsController < ApplicationController
     @page = Page.new(title: params[:page][:title],
                      description: params[:page][:description],
                      color: params[:page][:color])
-    @page.broadcast_replace_to("page_preview", target: 'page_preview', partial: 'pages/show_page')
+    @page.broadcast_replace_to('page_preview', target: 'page_preview', partial: 'pages/show_page')
   end
 end

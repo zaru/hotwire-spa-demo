@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :item_labels
   resources :labels
   resources :pages
-  resource :page_previews, only: [:show, :create]
+  resource :page_previews, only: %i[show create]
   resources :articles
   resources :tabs, only: [:index]
   resource :infinite_scrolls, only: [:show]

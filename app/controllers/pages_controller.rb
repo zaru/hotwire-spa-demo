@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: %i[ show edit update destroy ]
+  before_action :set_page, only: %i[show edit update destroy]
 
   # GET /pages or /pages.json
   def index
@@ -7,8 +7,7 @@ class PagesController < ApplicationController
   end
 
   # GET /pages/1 or /pages/1.json
-  def show
-  end
+  def show; end
 
   # GET /pages/new
   def new
@@ -16,8 +15,7 @@ class PagesController < ApplicationController
   end
 
   # GET /pages/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /pages or /pages.json
   def create
@@ -25,7 +23,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to @page, notice: "Page was successfully created." }
+        format.html { redirect_to @page, notice: 'Page was successfully created.' }
         format.json { render :show, status: :created, location: @page }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class PagesController < ApplicationController
   def update
     respond_to do |format|
       if @page.update(page_params)
-        format.html { redirect_to @page, notice: "Page was successfully updated." }
+        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
         format.json { render :show, status: :ok, location: @page }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,19 +49,20 @@ class PagesController < ApplicationController
   def destroy
     @page.destroy
     respond_to do |format|
-      format.html { redirect_to pages_url, notice: "Page was successfully destroyed." }
+      format.html { redirect_to pages_url, notice: 'Page was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_page
-      @page = Page.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def page_params
-      params.require(:page).permit(:title, :description, :color)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_page
+    @page = Page.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def page_params
+    params.require(:page).permit(:title, :description, :color)
+  end
 end

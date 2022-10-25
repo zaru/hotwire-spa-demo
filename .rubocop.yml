@@ -1,0 +1,26 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'test/**/*'
+    - 'node_modules/**/*'
+    - 'bin/**/*'
+    - 'vendor/**/*'
+  NewCops: enable
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/AsciiComments:
+  Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - 'config/routes.rb'
+    - 'config/environments/*'
+    - 'lib/tasks/**/*'
+Rails/I18nLocaleTexts:
+  Enabled: false

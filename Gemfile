@@ -10,16 +10,16 @@ gem 'redis', '~> 4.0'
 gem 'sqlite3', '~> 1.4'
 
 # フロントビルドシステム
-gem 'sprockets-rails'
 gem 'cssbundling-rails'
-gem 'sass-rails', '>= 6'
 gem 'jsbundling-rails'
+gem 'sass-rails', '>= 6'
+gem 'sprockets-rails'
 
 # View / Presenter
-gem 'turbo-rails'
-gem 'stimulus-rails'
 gem 'jbuilder', '~> 2.7'
 gem 'kaminari'
+gem 'stimulus-rails'
+gem 'turbo-rails'
 
 # Performance
 gem 'bootsnap', '>= 1.4.4', require: false

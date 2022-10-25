@@ -10,55 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_25_045423) do
-  create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+ActiveRecord::Schema[7.0].define(version: 20_221_025_045_423) do
+  create_table 'articles', force: :cascade do |t|
+    t.string 'title'
+    t.text 'content'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "item_labels", force: :cascade do |t|
-    t.integer "item_id"
-    t.integer "label_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_item_labels_on_item_id"
-    t.index ["label_id"], name: "index_item_labels_on_label_id"
+  create_table 'item_labels', force: :cascade do |t|
+    t.integer 'item_id'
+    t.integer 'label_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['item_id'], name: 'index_item_labels_on_item_id'
+    t.index ['label_id'], name: 'index_item_labels_on_label_id'
   end
 
-  create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'items', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "labels", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'labels', force: :cascade do |t|
+    t.string 'title'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "pages", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-    t.string "color"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'pages', force: :cascade do |t|
+    t.string 'title'
+    t.string 'description'
+    t.string 'color'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "product_models", force: :cascade do |t|
-    t.integer "product_id"
-    t.string "model_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_product_models_on_product_id"
+  create_table 'product_models', force: :cascade do |t|
+    t.integer 'product_id'
+    t.string 'model_number'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['product_id'], name: 'index_product_models_on_product_id'
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'products', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
-
 end
