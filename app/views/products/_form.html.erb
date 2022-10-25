@@ -1,0 +1,46 @@
+<%= turbo_stream_from 'product-models' %>
+<div class="w-full max-w-2xl mx-auto my-5 p-3">
+  <%= form_with(model: product) do |form| %>
+    <% if product.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+        <ul>
+          <% product.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-6">
+      <%= form.label :name, class: 'block mb-2 text-sm text-gray-600 dark:text-gray-400' %>
+      <%= form.text_field :name, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500' %>
+    </div>
+
+    <div class="mb-6">
+      <div class="mb-3" id="product-models">
+        <%= form.fields_for :product_models do |model_form| %>
+          <%= render 'products/product_model_part', model_form: model_form %>
+        <% end %>
+      </div>
+      <%= form.submit '型番を追加',
+        formaction: product_model_part_path,
+        formmethod: :post,
+        formnovalidate: true,
+        class: 'bg-gray-500 px-5 py-2 text-xs shadow-xs font-medium tracking-wider  text-indigo-100 rounded-full hover:shadow-2xl hover:bg-gray-600'
+      %>
+    </div>
+
+    <div class="mb-6 bg-amber-100 p-2 text-sm">
+      <p>型番の削除は[保存]するまで反映はされません</p>
+    </div>
+
+    <div class="flex justify-center">
+      <button class="group bg-indigo-500 px-5 py-2 text-xs shadow-xs font-medium tracking-wider  text-indigo-100 rounded-full hover:shadow-2xl hover:bg-indigo-600">
+        <span class="group-disabled:hidden">保存</span>
+        <span class="hidden group-disabled:inline">保存中...</span>
+      </button>
+    </div>
+  <% end %>
+</div>

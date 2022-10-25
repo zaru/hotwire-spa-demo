@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   resources :articles
   resources :tabs, only: [:index]
   resource :infinite_scrolls, only: [:show]
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :products, only: %i[index new create edit update destroy]
+  resource :product_model_part, only: %i[create destroy]
 end

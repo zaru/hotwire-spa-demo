@@ -25,6 +25,7 @@ $ yarn watch:js
 - [CRUD SPA 風味](http://localhost:3000/articles)
 - [Tab 切り替え](http://localhost:3000/tabs)
 - [ライブプレビュー](http://localhost:3000/pages/new)
+- [accepts_nested_attributes_for な親子を一括で保存する](http://localhost:3000/products)
 - [has_many なラベル付け](http://localhost:3000/items/1)
   - rails console で適当に Item 作ってください
   - `Item.create(name: 'foo')`

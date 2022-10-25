@@ -1,0 +1,10 @@
+<div class="w-full max-w-2xl mx-auto my-5 bg-white shadow-sm rounded-sm border border-gray-200">
+  <header class="px-5 py-4 border-b border-gray-100 flex justify-between items-center">
+    <h2 class="font-semibold text-gray-800">商品編集フォーム</h2>
+    <%= link_to '← 一覧へ戻る',
+                products_path,
+                class: 'underline hover:no-underline decoration-1 text-xs text-slate-600 tracking-wider hover:shadow-2xl' %>
+  </header>
+
+  <%= render "form", product: @product %>
+</div>

@@ -1,0 +1,13 @@
+<div class="mb-3" id="product_model_index_<%= model_form.index %>">
+  <%= model_form.label :model_number, class: 'block mb-2 text-sm text-gray-600 dark:text-gray-400' %>
+  <div class="flex gap-x-1.5 justify-end">
+    <%= model_form.text_field :model_number, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500' %>
+    <%= model_form.submit '削除',
+      formaction: product_model_part_path(index: model_form.index, product_model_id: model_form.object.id),
+      formmethod: :delete,
+      formnovalidate: true,
+      class: 'bg-red-500 px-5 py-2 text-xs shadow-xs font-medium tracking-wider  text-red-100 rounded-full hover:shadow-2xl hover:bg-red-600'
+    %>
+  </div>
+
+</div>

@@ -1,0 +1,6 @@
+<% # accepts_nested_attributes_for で子要素の削除をするための View を生成して置換する %>
+<%= fields model: @product do |form| %>
+  <%= form.fields_for :product_models, @product_model, child_index: params[:index] do |model_form| %>
+    <%= turbo_stream.replace "product_model_index_#{params[:index]}", partial: 'products/destroy_product_model_part', locals: { model_form: model_form } %>
+  <% end %>
+<%end %>

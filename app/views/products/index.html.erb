@@ -1,0 +1,54 @@
+<div class="w-full max-w-2xl mx-auto my-5 bg-white shadow-sm rounded-sm border border-gray-200">
+  <header class="px-5 py-4 border-b border-gray-100 flex justify-between items-center">
+    <h2 class="font-semibold text-gray-800">商品一覧</h2>
+    <%= link_to "新商品追加",
+                new_product_path,
+                class: 'underline hover:no-underline decoration-1 text-xs text-slate-600 tracking-wider hover:shadow-2xl' %>
+  </header>
+
+  <div class="p-3">
+    <div class="overflow-x-auto">
+      <table class="table-auto w-full overflow-hidden">
+        <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+        <tr>
+          <th class="p-2 whitespace-nowrap">
+            <div class="font-semibold text-left">Title</div>
+          </th>
+          <th class="p-2 whitespace-nowrap">
+            <div class="font-semibold text-left">UpdatedAt</div>
+          </th>
+          <th class="p-2 whitespace-nowrap">
+            <div class="font-semibold text-left"></div>
+          </th>
+        </tr>
+        </thead>
+        <tbody id="articles" class="text-sm divide-y divide-gray-100">
+        <% @products.each do |product| %>
+          <tr>
+            <td class="p-2 whitespace-nowrap"><%= product.name %></td>
+            <td class="p-2 whitespace-nowrap"><%= product.updated_at %></td>
+            <td class="p-2 whitespace-nowrap">
+              <div class="flex gap-x-1.5 justify-end">
+                <%= link_to '更新',
+                            edit_product_path(product),
+                            class: 'bg-indigo-500 px-5 py-2 text-xs shadow-xs font-medium tracking-wider  text-indigo-100 rounded-full hover:shadow-2xl hover:bg-indigo-600'
+                %>
+                <%= link_to '削除',
+                            product,
+                            method: :delete,
+                            data: {
+                              turbo_method: :delete,
+                              turbo_frame: '_top',
+                              turbo_confirm: 'Are you sure?'
+                            },
+                            class: 'bg-red-500 px-5 py-2 text-xs shadow-xs font-medium tracking-wider  text-red-100 rounded-full hover:shadow-2xl hover:bg-red-600'
+                %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

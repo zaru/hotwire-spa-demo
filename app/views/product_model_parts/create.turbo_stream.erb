@@ -1,0 +1,7 @@
+<% # TurboStream で fields_for な View 要素を生成して append で渡す %>
+<% # 新規追加なのでユニークな child_index にする必要がある。ユニークな数値であれば何でも OK なのでミリ秒を渡している %>
+<%= fields model: @product do |form| %>
+  <%= form.fields_for :product_models, child_index: Time.now.strftime('%s%L').to_i do |model_form| %>
+    <%= turbo_stream.append 'product-models',  partial: 'products/product_model_part', locals: { model_form: model_form } %>
+  <% end %>
+<%end %>
