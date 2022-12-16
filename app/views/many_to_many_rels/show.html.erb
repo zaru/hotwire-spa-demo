@@ -1,0 +1,72 @@
+<div class="mx-auto my-5 w-full max-w-2xl"
+     data-controller="dialog"
+>
+  <button type="button" class="rounded-full bg-indigo-500 px-5 py-2 text-xs font-medium tracking-wider text-indigo-100 shadow-xs hover:bg-indigo-600 hover:shadow-2xl"
+          data-action="click->dialog#open">モーダルを開く</button>
+  <dialog data-dialog-target="dialog">
+    <div class="mt-5 flex items-center justify-between px-5">
+      <h1 class="text-2xl">メンバー管理</h1>
+      <button type="button" class="rounded-full bg-gray-500 px-5 py-2 text-xs font-medium tracking-wider text-gray-100 shadow-xs hover:bg-gray-600 hover:shadow-2xl"
+              data-action="click->dialog#close">閉じる</button>
+    </div>
+    <div>
+      <h2 class="mt-5 px-5">招待チームメンバー</h2>
+      <p class="mt-2 px-5 text-sm">TODO: メンバーアサインの実装は何もしていない</p>
+      <div class="mt-2 px-5">
+        <div class="flex flex-wrap gap-1 rounded-md border border-gray-300 p-2">
+        <span class="rounded-full bg-slate-200 px-5 py-2">
+          AAAAA
+          <a href="">x</a>
+        </span>
+          <span class="rounded-full bg-slate-200 px-5 py-2">
+          BBBBB
+          <a href="">x</a>
+        </span>
+          <input type="text" class="flex-1 px-3 py-2 placeholder-gray-300 focus:outline-none">
+        </div>
+      </div>
+    </div>
+    <div data-controller="filter-list">
+      <h2 class="mt-5 px-5">フォーム一覧</h2>
+
+      <div class="mt-2 px-5">
+        <label class="mb-2 block text-sm text-gray-600 dark:text-gray-400">フォーム検索</label>
+        <input type="text" class="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-300 focus:border-indigo-300 focus:outline-none focus:ring focus:ring-indigo-100"
+               data-filter-list-target="search"
+               data-action="input->filter-list#search"
+        >
+      </div>
+
+      <div data-controller="select-all change-all">
+        <div class="mt-2 flex justify-between px-5">
+          <label>
+            <input type="checkbox" data-action="input->select-all#toggle">
+            すべてにチェックを付ける
+          </label>
+          <select data-action="change->change-all#changeAll">
+            <option>権限一括設定</option>
+            <option value="admin">admin</option>
+            <option value="normal">normal</option>
+          </select>
+        </div>
+        <ul class="h-40 overflow-y-scroll">
+          <% 30.times do |i| %>
+            <li class="flex justify-between border-b-2 px-5 py-2"
+                data-filter-list-target="item"
+                data-name="フォーム_<%= i %>"
+            >
+              <label>
+                <input type="checkbox" name="form_ids[]" value="<%= i %>" data-select-all-target="checkbox">
+                フォーム_<%= i %>
+              </label>
+              <select data-change-all-target="select">
+                <option value="admin">admin</option>
+                <option value="normal">normal</option>
+              </select>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </dialog>
+</div>
