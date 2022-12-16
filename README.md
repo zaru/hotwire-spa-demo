@@ -30,3 +30,9 @@ $ yarn watch:js
   - rails console で適当に Item 作ってください
   - `Item.create(name: 'foo')`
 - [無限スクロールのページング](http://localhost:3000/infinite_scrolls)
+- [多対多のリレーション設定するUI](http://localhost:3000/many_to_many_rels)
+  - Rails 側は未実装
+  - UI の挙動を Stimulus で実験実装
+    - チェックボックス一括選択・解除
+    - セレクトアイテム一括変更
+    - インクリメンタルサーチ
