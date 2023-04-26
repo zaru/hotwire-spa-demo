@@ -1,3 +1,5 @@
 <div class="w-96 mx-auto">
-  <%= render "form", book: @book %>
+  <%= turbo_frame_tag 'book_form_dialog' do %>
+    <%= render "form", book: @book %>
+  <% end %>
 </div>

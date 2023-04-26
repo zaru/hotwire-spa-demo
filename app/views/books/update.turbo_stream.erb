@@ -1,0 +1,4 @@
+<%= turbo_stream.replace @book,
+                         partial: 'books/list_book',
+                         locals: { book: @book }
+%>

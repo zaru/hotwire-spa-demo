@@ -1,0 +1,4 @@
+<%= turbo_stream.prepend 'books',
+                         partial: 'books/list_book',
+                         locals: { book: @book }
+%>

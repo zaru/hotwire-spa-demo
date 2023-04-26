@@ -1,5 +1,8 @@
 <div>
-  <%= form_with(model: book) do |form| %>
+  <!-- ここで _top 指定をしないと flash メッセージが表示されない（それはページ全体の再レンダリングが必要だから） -->
+  <!-- しかし、バリデーションエラーの時は _top だと <dialog> ではなくフォーム自体がページに表示されてしまう -->
+  <!-- 現状だと簡単なやり方でこの制御は出来なさそう https://github.com/hotwired/turbo/issues/257 -->
+  <%= form_with(model: book, data: { turbo_frame: '_top' }) do |form| %>
     <% if book.errors.any? %>
       <div class="text-red-700 mt-2">
         <h2 class="font-bold"><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
