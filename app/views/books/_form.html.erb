@@ -1,27 +1,32 @@
-<%= form_with(model: book) do |form| %>
-  <% if book.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+<div>
+  <%= form_with(model: book) do |form| %>
+    <% if book.errors.any? %>
+      <div class="text-red-700 mt-2">
+        <h2 class="font-bold"><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
 
-      <ul>
-        <% book.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul class="list-disc pl-8">
+          <% book.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mt-2">
+      <%= form.label :title, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+      <%= form.text_field :title, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' %>
+    </div>
+
+    <div class="mt-2">
+      <%= form.label :description, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+      <%= form.text_area :description, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' %>
+    </div>
+
+    <div class="mt-2">
+      <%= form.button class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' do %>
+      submit
+      <% end %>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

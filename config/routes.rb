@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :books
+  resources :books, only: %i[index new create edit update destroy]
   resources :items
   resources :item_labels
   resources :labels
