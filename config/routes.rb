@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :books
   resources :items
   resources :item_labels
   resources :labels
