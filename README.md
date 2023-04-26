@@ -23,6 +23,8 @@ $ yarn watch:js
 ## デモページ
 
 - [CRUD SPA 風味](http://localhost:3000/articles)
+- [CRUD ダイアログで操作](http://localhost:3000/books)
+  - ただし validation error / flash message の兼ね合いがまだ出来ていない、悩み
 - [Tab 切り替え](http://localhost:3000/tabs)
 - [ライブプレビュー](http://localhost:3000/pages/new)
 - [accepts_nested_attributes_for な親子を一括で保存する](http://localhost:3000/products)
